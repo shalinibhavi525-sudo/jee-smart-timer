@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Playlist Stats</title>
+    <title>JEE Stats</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>📊 Playlist Mood Stats</h1>
+        <h1> Your Stats</h1>
         {% if stats %}
-            <p>Happy: {{ stats['happy'] }} songs</p>
-            <p>Sad: {{ stats['sad'] }} songs</p>
-            <p>Neutral: {{ stats['neutral'] }} songs</p>
-            <img src="{{ url_for('static', filename='sample.png') }}" alt="Mood Pie Chart">
+            <p>Questions Attempted: {{ stats.attempted }}</p>
+            <p>Average Time: {{ "%.2f"|format(stats.avg_time) }} seconds</p>
+            <p>Accuracy: {{ "%.2f"|format(stats.accuracy) }}%</p>
+            <img src="{{ url_for('static', filename='sample.png') }}" alt="Stats Graph">
         {% else %}
-            <p>No songs analyzed yet! Add one first.</p>
+            <p>No data yet! Start solving questions.</p>
         {% endif %}
         <br>
         <a href="/">⬅ Back</a>
